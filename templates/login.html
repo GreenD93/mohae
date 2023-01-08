@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/53a8c415f1.js" crossorigin="anonymous"></script>
+  <link href="/static/css/login.css" rel="stylesheet"/>
+  <!-- alert 팝업 변경 -->
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<header>
+
+</headr>
+<body>
+
+    <div class="wrap">
+        <div class="login">
+          <a href="http://172.30.1.15:5000/#home"><i class="fa fa-home" style="font-size:36px"></i></a>
+            <h2>Log-In</h2>
+            <div class="login_id">
+                <h4>ID</h4>
+                <input type="text" name="user_id" id="user_id" class="login_input" placeholder="Id" value=""/>
+            </div>
+            <div class="login_pw">
+                <h4>Password</h4>
+                <input type="password" name="user_pw" id="user_pw" class="login_input" placeholder="Password" value=""/>
+            </div>
+            <div class="submit">
+                <input type="submit" id="btn_login" value="LOGIN" onclick="login()">
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+  $(".login_input").on("keyup",function(key){
+      if(key.keyCode==13) {
+        $("#btn_login").click();
+      }
+  });
+
+  function login() {
+    $.ajax({
+            url: "http://172.30.1.15:5000/login", // 클라이언트가 HTTP 요청을 보낼 서버의 URL 주소
+            data: {
+              "user_id" : $("#user_id").val(),
+              "user_pw" : $("#user_pw").val().replace("'", "")
+            },  // HTTP 요청과 함께 서버로 보낼 데이터
+            method: "POST",   // HTTP 요청 메소드(GET, POST 등)
+            dataType: "json" // 서버에서 보내줄 데이터의 타입
+        })
+        // HTTP 요청이 성공하면 요청한 데이터가 done() 메소드로 전달됨.
+        .done(function(json) {
+          console.log(json.login_result);
+          if (json.login_result == "success") {
+            let f = document.createElement('form');
+            f.setAttribute('action', 'http://172.30.1.15:5000/admin');
+            f.setAttribute('method', 'post');
+            document.body.appendChild(f);
+            f.submit();
+          } else {
+            Swal.fire({
+              icon: 'error',
+              title: '계정 확인 필요',
+            })
+          }
+        })
+        // HTTP 요청이 실패하면 오류와 상태에 관한 정보가 fail() 메소드로 전달됨.
+        .fail(function(xhr, status, errorThrown) {
+          console.log(errorThrown);
+          console.log(status);
+        })
+        .always(function(xhr, status) {
+        });
+  }
+</script>
+</body>
+</html>

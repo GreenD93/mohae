@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+  <link href="/static/css/styles.css" rel="stylesheet"/>
+  <link href="/static/css/login.css" rel="stylesheet"/>
+  <!-- 날짜 선택 datepicker -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" integrity="sha512-uto9mlQzrs59VwILcLiRYeLKPPbS/bT71da/OEBYEwcdNUk8jYIy+D176RYoop1Da+f9mvkYrmj5MCLZWEtQuA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css" integrity="sha512-aOG0c6nPNzGk+5zjwyJaoRUgCdOrfSDhmMID2u4+OIslr0GjpLKo7Xm0Ao3xmpM4T8AmIouRkqwj1nrdVsLKEQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+</head>
+<body >
+  <div style=" height:100%;width: 100%; margin: auto;">
+      <div id="search_div" style="width:93%; height:15%; margin: auto;">
+          <div style="text-align:center;">
+            <a href="http://172.30.1.15:5000/#home"><i class="fa fa-home" style="font-size:36px"></i></a>
+            <h2 style="color:black;">견적 요청 List</h2></h2>
+          </div>
+          <form id="searh_form" action="http://172.30.1.15:5000/admin" method="POST">
+            <label>고객명: &nbsp;
+            <input type="text" class="form-control" id="name"   name="name"   style="width:100px; height: 35px; display:inline; margin-right:15px" />
+            <label>기간: &nbsp;
+            <input type="text" class="form-control datepicker" id="regdate_from" name="regdate_from"  style="width:130px; height: 35px;  display:inline; margin-right:15px"/>
+            ~
+            <input type="text" class="form-control datepicker" id="regdate_to"   name="regdate_to"  style="width:130px; height: 35px;  display:inline; margin-left:15px"/>
+            <input type="hidden"  id="page"  name="page"  style="width:100px; height: 35px;  display:inline; margin-left:15px"/>
+          </form>
+          <button type="button" style="margin-left:auto" id="search_btn" class="btn btn-primary btn-xl" onclick="fn_search(1)">조회</button>
+      </div>
+
+      <div style="height:30%;width: 93%;margin: auto;">
+          <table id="data_table"style="border: 1px  solid #111114; width:97%">
+            <colgroup>
+              <col width = "5%">
+              <col width = "5%">
+              <col width = "5%">
+              <col width = "5%">
+              <col width = "5%">
+              <col width = "5%">
+              <col width = "5%">
+              <col width = "5%">
+              <col width = "5%">
+              <col width = "5%">
+              <col width = "5%">
+              <col width = "5%">
+              <col width = "5%">
+              <col width = "5%">
+              <col width = "5%">
+              <col width = "5%">
+              <col width = "5%">
+              <col width = "5%">
+              <col width = "5%">
+              <col width = "5%">
+            </colgroup>
+              <thead>
+                  <tr>
+                    <th nowrap>번호</th>
+                    <th nowrap>성함</th>
+                    <th nowrap>연락처</th>
+                    <th nowrap>이메일</th>
+                    <th nowrap>주소</th>
+                    <th nowrap>건물유형</th>
+                    <th nowrap>평수</th>
+                    <th nowrap>공사예정일</th>
+                    <th nowrap>입주예정일</th>
+                    <th nowrap>구분</th>
+                    <th nowrap>예산</th>
+                    <th nowrap>바닥공사</th>
+                    <th nowrap>바닥공사_기타</th>
+                    <th nowrap>욕실공사</th>
+                    <th nowrap>설비공사</th>
+                    <th nowrap>설비공사_기타</th>
+                    <th nowrap>확장</th>
+                    <th nowrap>확장_기타</th>
+                    <th nowrap>샷시</th>
+                    <th nowrap>샷시_기타</th>
+                    <th nowrap>기타문의</th>
+                    <th nowrap>파일첨부</th>
+                    <th nowrap>등록일자</th>
+                  </tr>
+              </thead>
+            <tbody>
+                {% for i in cons_list %}
+                <tr>
+                  <td style="font-weight:bold;" >{{ i[0] }}</td>
+                  <td >{{ i[1] }}</td>
+                  <td >{{ i[2] }}</td>
+                  <td >{{ i[3] }}</td>
+                  <td >{{ i[4] }}</td>
+                  <td >{{ i[5] }}</td>
+                  <td >{{ i[6] }}</td>
+                  <td >{{ i[7] }}</td>
+                  <td >{{ i[8] }}</td>
+                  <td >{{ i[9] }}</td>
+                  <td >{{ i[10] }}</td>
+                  <td >{{ i[11] }}</td>
+                  <td >{{ i[12] }}</td>
+                  <td >{{ i[13] }}</td>
+                  <td >{{ i[14] }}</td>
+                  <td >{{ i[15] }}</td>
+                  <td >{{ i[16] }}</td>
+                  <td >{{ i[17] }}</td>
+                  <td >{{ i[18] }}</td>
+                  <td >{{ i[19] }}</td>
+                  <td >{{ i[20] }}</td>
+                  {% if i[21] == 'Y' %}
+                  <td ><a href="#" style="color:blue;" onclick="fn_filedownload('{{ i[23] }}')">{{ i[21] }}</a></td>
+                  {% else %}
+                  <td >{{ i[21] }}</td>
+                  {% endif %}
+                  <td >{{ i[22] }}</td>
+                </tr>
+                {% endfor %}
+                {% if page_cnt == 0 %}
+                <tr>
+                  <td colspan="22" style="text-align:center">데이터가 없습니다.</td>
+                </tr>
+                {% endif %}
+
+            </tbody>
+          </table>
+          <div id="page_div" style="border: 1px solid gray;text-align: center;width: 97%;">
+            {% for x in range(page_cnt) %}
+            <a href="#" onclick="fn_search({{ x+1 }})" style="padding-right:10px">{{ x+1 }}</a>
+            {% endfor %}
+          </div>
+      </div>
+  </div>
+</body>
+<script>
+  $(document).ready(function() {
+      // 날짜 입력란 이벤트
+      $('.datepicker').datepicker({
+        changeMonth: true, // 월을 바꿀수 있는 셀렉트 박스를 표시한다.
+        changeYear: true, // 년을 바꿀 수 있는 셀렉트 박스를 표시한다.
+        minDate: '-100y', // 현재날짜로부터 100년이전까지 년을 표시한다.
+        nextText: '다음 달', // next 아이콘의 툴팁.
+        prevText: '이전 달', // prev 아이콘의 툴팁.
+        numberOfMonths: [1,1], // 한번에 얼마나 많은 월을 표시할것인가. [2,3] 일 경우, 2(행) x 3(열) = 6개의 월을 표시한다.
+        stepMonths: 1, // next, prev 버튼을 클릭했을때 얼마나 많은 월을 이동하여 표시하는가.
+        yearRange: 'c-5:c+5', // 년도 선택 셀렉트박스를 현재 년도에서 이전, 이후로 얼마의 범위를 표시할것인가.
+        showButtonPanel: true, // 캘린더 하단에 버튼 패널을 표시한다.
+        currentText: '오늘 날짜' , // 오늘 날짜로 이동하는 버튼 패널
+        closeText: '닫기',  // 닫기 버튼 패널
+        dateFormat: "yy-mm-dd", // 텍스트 필드에 입력되는 날짜 형식.
+        showAnim: "slide", //애니메이션을 적용한다.
+        showMonthAfterYear: true , // 월, 년순의 셀렉트 박스를 년,월 순으로 바꿔준다.
+        dayNamesMin: ['월', '화', '수', '목', '금', '토', '일'], // 요일의 한글 형식.
+        monthNamesShort: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'], // 월의 한글 형식
+        //yearRange: "2022:2023" //연도 범위
+      });
+  })
+
+  // 조회버튼 이벤트
+  function fn_search(page_num) {
+    var name = $("#name").val() ? "%"+$("#name").val()+"%":'%';
+    var regdate_from = $("#regdate_from").val() ? $("#regdate_from").val():'1990-01-01';
+    var regdate_to = $("#regdate_to").val() ? $("#regdate_to").val():'2030-01-01';
+    var page = page_num ? (page_num*10)-10:'1';
+
+    $("#name").val(name);
+    $("#regdate_from").val(regdate_from);
+    $("#regdate_to").val(regdate_to);
+    $("#page").val(page);
+
+    $("#searh_form").submit();
+  }
+
+  // 엔터키 입력 시 조회버튼 클릭
+  $(".form-control").on("keyup",function(key){
+      if(key.keyCode==13) {
+        $("#search_btn").click();
+      }
+  });
+
+  // 파일 다운로드 이벤트
+  function fn_filedownload(file_seq) {
+    console.log(file_seq);
+    $.ajax({
+            url: "http://172.30.1.15:5000/file_download", // 클라이언트가 HTTP 요청을 보낼 서버의 URL 주소
+            data: {
+              "file_seq" : file_seq
+            },  // HTTP 요청과 함께 서버로 보낼 데이터
+            method: "POST",   // HTTP 요청 메소드(GET, POST 등)
+            dataType: "json" // 서버에서 보내줄 데이터의 타입
+        })
+        // HTTP 요청이 성공하면 요청한 데이터가 done() 메소드로 전달됨.
+        .done(function(json) {
+          console.log("success:" + json)
+          for (i=0; i<json.length; i++) {
+              file = json[i].toString().split("/");
+              file_name = file[5].substr(0, file[5].length - 14);
+              file_down(json[i], file_name);
+              setTimeout(function() {}, 3000);
+              console.log("json[i] : "+ json[i]);
+              console.log("file_name : "+ file_name);
+          }
+
+
+        })
+        .fail(function(xhr, status, errorThrown) {
+            $("#text").html("오류가 발생했다.<br>")
+            .append("오류명: " + errorThrown + "<br>")
+            .append("상태: " + status);
+        })
+  }
+
+  function file_down (href, file_name) {
+    console.log("file_down");
+    var element = document.createElement('a');
+    element.setAttribute('href', href);
+    element.setAttribute('download', file_name);
+    document.body.appendChild(element);
+    element.click();
+    element.remove();
+  }
+</script>
+
+</html>

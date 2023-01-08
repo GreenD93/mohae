@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <!-- script -->
+  {% include  'include/header.html' %}
+
+  <!-- nav -->
+  {% include  'include/nav.html' %}
+
+  <!-- home_img  메인화면 상단 이미지-->
+  <header class="home_img"></header>
+
+  <!-- about-->
+  {% include  'about.html' %}
+
+  <!-- project  -->
+  {% include  'project.html' %}
+
+  <!-- workprocess  -->
+  {% include  'workprocess.html' %}
+
+  <!-- Consultant -->
+  <section class="page-section" id="consultant" >
+      <div class="container px-4 px-lg-5">
+        <div class="page-section container px-4 px-lg-5" >
+          <h2 class="text-center mt-0 ">
+              <span style="font-style:italic;">.consultant</span>
+          </h2>
+          <hr class="consultantDivider"/>
+          <button id="btn_consultant" type="button" class="d_btn" style="width:200px; margin:auto; display:block; margin-bottom:30px;" onclick="location.href='http://172.30.1.15:5000/consultant'">
+            견적 문의
+          </button>
+        </div>
+      </div>
+</section>
+
+  <!-- footer -->
+  {% include  'include/footer.html' %}
+
+</html>

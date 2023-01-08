@@ -1,0 +1,388 @@
+<style>
+body, h4 {
+  margin:0;
+}
+/* 노말라이즈 */
+body, ul, li, h1 {
+    margin:0;
+    padding:0;
+    list-style:none;
+}
+
+a {
+    color:inherit;
+    text-decoration:none;
+}
+
+/* 라이브러리 */
+
+.con {
+    margin:0 auto;
+}
+
+.img-box > img {
+    width:100%;
+    display:block;
+}
+
+.row::after {
+    content:"";
+    display:block;
+    clear:both;
+}
+
+.cell {
+    float:left;
+    box-sizing:border-box;
+}
+
+.cell-right {
+    float:right;
+    box-sizing:border-box;
+}
+
+.margin-0-auto {
+    margin:0 auto;
+}
+
+.block {
+    display:block;
+}
+
+.inline-block {
+    display:inline-block;
+}
+
+.text-align-center {
+    text-align:center;
+}
+
+.line-height-0-ch-only {
+    line-height:0;
+}
+
+.line-height-0-ch-only > * {
+    line-height:normal;
+}
+
+.relative {
+    position:relative;
+}
+
+.absolute-left {
+    position:absolute;
+    left:0;
+}
+
+.absolute-top {
+    position:absolute;
+    top:0;
+}
+
+.absolute-right {
+    position:absolute;
+    right:0;
+}
+
+.absolute-middle {
+    position:absolute;
+    top:50%;
+    transform:translateY(-50%);
+}
+
+.width-100p {
+    width:100%;
+}
+
+.table {
+    display:table;
+}
+
+.table-cell {
+    display:table-cell;
+}
+
+.vertical-align-top {
+    vertical-align:top;
+}
+
+.vertical-align-middle {
+    vertical-align:middle;
+}
+
+.vertical-align-bottom {
+    vertical-align:bottom;
+}
+
+.page-2 {
+    width: 1460px;
+    background: #FAFAFA;
+    margin: 0 auto;
+}
+
+.page-2 .menu .menu-logo {
+    position: absolute;
+    left: 50%;
+    margin-top: 70px;
+    transform: translateX(-50%);
+}
+
+.page-2 .menu .menu-logo > li > a {
+    font-size: 38px;
+    color: #333333;
+}
+
+.my-1 > .owl-carousel {
+    margin-top: 100px;
+}
+
+.my-1 > .owl-carousel > .owl-stage-outer > .owl-stage {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.my-1 > .owl-carousel > .owl-stage-outer > .owl-stage > .owl-item > .item {
+    height: 450px;
+    margin-top: 100px;
+    position: relative;
+}
+
+.my-1 > .owl-carousel > .owl-stage-outer > .owl-stage > .owl-item > .item > .bg {
+    position: absolute;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    top: 0;
+    left: 10px;
+    right: 10px;
+    bottom: 0;
+    z-index: -1;
+}
+
+.my-1 > .owl-carousel > .owl-stage-outer > .owl-stage > .owl-item.active > .item {
+    height: 650px;
+    margin-top: 0;
+}
+
+.my-1 > .owl-carousel > .owl-nav {
+    margin-top: 0;
+}
+
+.my-1 > .owl-carousel > .owl-dots {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    display: none;
+}
+
+.my-1 > .owl-carousel > .owl-nav > .owl-prev,
+.my-1 > .owl-carousel > .owl-nav > .owl-next {
+    position: absolute;
+    top: 50%;
+    right: 95%;
+    transform: translateY(-50%);
+    border-radius: 50% !important;
+    background-color: rgba(0, 0, 0, 0) !important;
+    font-size: 3rem !important;
+    padding: 0px 20px 0px 15px !important;
+    border-color:black;
+}
+
+.my-1 > .owl-carousel > .owl-nav > .owl-prev::after {
+
+    /*    display: block;*/
+    position: absolute;
+    right: 2px;
+    bottom: 40px;
+    ;
+    width 0;
+    height: 1px;
+    transition: width 0.3s;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.my-1 > .owl-carousel > .owl-nav > .owl-prev:active,
+.my-1 > .owl-carousel > .owl-nav > .owl-next:active {
+    color: #afafaf;
+    transform: translateY(-45%);
+}
+
+.my-1 > .owl-carousel > .owl-nav > .owl-next {
+    left: auto;
+    right: 0;
+    padding: 0px 15px 0px 20px !important;
+}
+
+.my-1 > .owl-carousel > .owl-dots > .owl-dot > span {
+    border-radius: 3px;
+    margin: 0 3px;
+    padding: 10px;
+    display: block;
+}
+
+.page-2 .head .con .slick-slider > .btn-left,
+.page-2 .head .con .slick-slider > .btn-right {
+    position: absolute;
+    right: 10%;
+    top: 10%;
+    font-size: 30px;
+    color: #5d5d5d;
+}
+
+.page-2 .head .con .slick-slider > .btn-right::before {
+    content: "|";
+    display: block;
+    position: absolute;
+    bottom: 35px;
+    right: 26px;
+    transform: translateX(-50%);
+    width 0;
+    height: 1px;
+    font-size: 25px;
+}
+
+.page-2 .head .con .slick-slider > .btn-right {
+    right: 100px;
+    left: auto;
+}
+
+.page-2 .page-2-box {
+    position:relative;
+    width:100%;
+}
+
+.page-2 .txt {
+    position: relative;
+    display: block;
+    text-align: center;
+}
+
+.page-2 .txt .artist {
+    font-size: 20px;
+    color: #333333;
+    font-weight: 600;
+    line-height: 1.5em;
+    letter-spacing: -0.03em;
+}
+
+.page-2 .txt .tit {
+    font-size: 16px;
+    color: #787878;
+    line-height: 1.5em;
+}
+
+#PC_carousel{
+    display:block;
+}
+#MOBILE_carousel{
+    display:none;
+}
+
+@media all and (min-width: 200px) and (max-width: 1023px) {
+    .my-1 > .owl-carousel {
+        margin-top: 50px;
+    }
+
+    .my-1 > .owl-carousel > .owl-stage-outer > .owl-stage > .owl-item > .item {
+        height: auto;
+        width: 100%;
+        margin-top: 100px;
+        position: relative;
+    }
+
+    .my-1 > .owl-carousel > .owl-stage-outer > .owl-stage > .owl-item > .item > .bg {
+        position: absolute;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+        top: 0;
+        left: 10px;
+        right: 10px;
+        bottom: 0;
+        z-index: -1;
+    }
+
+    .my-1 > .owl-carousel > .owl-stage-outer > .owl-stage > .owl-item.active > .item {
+        height: auto;
+        width: 100%;
+        margin-top: 0;
+    }
+
+    .page-2 .page-2-box {
+        position:relative;
+        width:100%;
+    }
+
+    .owl-stage {
+        position:relative;
+        width:100%;
+    }
+
+    #PC_carousel{
+        display:none;
+    }
+    #MOBILE_carousel{
+        display:block;
+    }
+}
+
+
+
+  </style>
+  <!-- script -->
+  {% include  'include/header.html' %}
+
+  <!-- nav -->
+  {% include  'include/nav_add.html' %}
+<!-- caorusel-->
+
+<div class="row col-md-8" style="padding-top:5%; margin:auto" id="PC_carousel">
+    <div data-section-name="page-2" class="page page-2" >
+      <div class="page-2-box">
+          <div class="my-1" >
+              <div class="owl-carousel owl-theme">
+                {% for item in items %}
+                  <div class="item">
+                      <div class="bg" style="background-image:url({{ item.imgs }});"></div>
+                  </div>
+                {% endfor %}
+              </div>
+          </div>
+      </div>
+    </div>
+</div>
+
+<div class="carousel slide" data-bs-ride="carousel" id="MOBILE_carousel" style="margin-top:40%">
+  <div class="carousel-inner" style="vertical-align:middle">
+    {% for item in items %}
+        {% if loop.index == 1 %}
+           <div class="carousel-item active" style="vertical-align:middle;">
+        {% else %}
+           <div class="carousel-item" style="vertical-align:middle;">
+        {% endif %}
+        <img src="{{ item.imgs }}" class="d-block w-100" >
+    </div>
+    {% endfor %}
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#MOBILE_carousel" data-bs-slide="prev"  >
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#MOBILE_carousel" data-bs-slide="next"  >
+    <span class="carousel-control-next-icon" aria-hidden="true" ></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+
+</body>
+<script>
+// ESC 키 입력 시 뒤로가기 효과
+$(document).keydown(function(event) {
+  if ( event.keyCode == 27 || event.which == 27 ) {
+      history.back();
+  }
+});
+</script>
+</html>

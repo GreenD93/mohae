@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+  <!-- script -->
+  {% include  'include/header.html' %}
+
+  <!-- nav -->
+  {% include  'include/nav_add.html' %}
+
+<section class="col-lg-4 col-md-12 mb-4 mb-lg-0 page-section" id="consultant"  style="margin:auto">
+    <div style="display: block; margin-left: 5%; margin-right: auto;">
+        <form id="contactForm"
+              action="http://172.30.1.15:5000/submit-consultant"
+              method="POST"
+              target='blankifr'
+              class="row justify-content-center consultant_form"
+              enctype="multipart/form-data"
+              style="">
+            <label class="middle_title">1. 고객정보 (필수입력)</label>
+            <!-- Name input-->
+            <div class="form-floating mb-3">
+              <span id="label_name" class="card-subtitle">*성함</span><br>
+              <input class="form-control_new" id="name" name="name" type="text" placeholder="성함 및 업체명을 입력해주세요" />
+            </div>
+            <!-- Phone number input-->
+            <div class="form-floating mb-3">
+                <span id="label_phone" class="card-subtitle">*연락처</span><br>
+                <input class="form-control_new" id="phone" name="phone" type="tel" maxlength="11" placeholder=" '-' 제외 후 연락처를 입력해주세요." />
+            </div>
+            <!-- Email address input-->
+            <div class="form-floating mb-3">
+                <span id="label_email" class="card-subtitle">*E-mail</span><br>
+                <input class="form-control_new" id="email" name="email" type="email" placeholder="ex)mohaeDesign@gamil.com" />
+            </div>
+
+            <br><br>
+            <label class="middle_title">2. 사이트 정보</label>
+            <div class="form-floating mb-3">
+                <span class="card-subtitle">건물 유형</span><br>
+                <input type="radio" class="form-check-input" name="building_type" value="아파트"> 아파트
+                <input type="radio" class="form-check-input" name="building_type" style="margin-left: 10px" value="상가"> 상가
+                <input type="radio" class="form-check-input" name="building_type" style="margin-left: 10px" value="빌라"> 빌라
+                <input type="radio" class="form-check-input" name="building_type" style="margin-left: 10px" value="주택"> 주택
+                <input type="radio" class="form-check-input" name="building_type" style="margin-left: 10px" value="오피스"> 오피스
+                <input type="radio" class="form-check-input" name="building_type" style="margin-left: 10px" value="기타"> 기타
+                <input type="hidden" name="building_type_etc">
+
+                <br><br>
+                <span  class="card-subtitle">현장 주소</span><br>
+                <input type="text"    class="dform d_form mini"   id="sample6_postcode"       name="sample6_postcode"     placeholder="우편번호">
+                <input type="button"  class="dform d_btn"         id="btn_address"            name="btn_address"          onclick="sample6_execDaumPostcode()" value="우편번호 찾기"><br>
+                <input type="text"    class="dform d_form large"  id="sample6_address"        name="sample6_address"      placeholder="주소"><br>
+                <input type="text"    class="dform d_form"        id="sample6_detailAddress"  name="sample6_detailAddress"placeholder="상세주소">
+                <input type="text"    class="dform d_form"        id="sample6_extraAddress"   name="sample6_extraAddress" placeholder="참고항목">
+                <input type="hidden"  name="hid_address"          id="hid_address">
+
+                <br><br>
+                <span class="card-subtitle">평수</span><br>
+                <div class="form-floating mb-3">
+                    <input class="form-control_new" id="width" name="width" type="text" placeholder="공급면적 및 분양면적"/>
+                </div>
+            </div>
+
+            <br><br>
+            <label class="middle_title">3. 시공 의뢰 정보</label>
+            <div class="form-floating mb-3">
+              <div class="form-floating mb-3">
+                  <span class="card-subtitle">공사 예정일</span><br>
+                  <input class="form-control_new datepicker" id="work_date" name="work_date" type="text" placeholder="클릭하여 날짜를 선택해주세요"/>
+              </div>
+              <div class="form-floating mb-3">
+                  <span class="card-subtitle">입주 예정일</span><br>
+                  <input class="form-control_new datepicker" id="movein_Date" name="movein_Date" type="text" placeholder="클릭하여 날짜를 선택해주세요" />
+              </div>
+
+              <br>
+              <span class="card-subtitle">구분</span><br>
+              <input type="radio" class="form-check-input" name="category" value="디자인"> 디자인
+              <input type="radio" class="form-check-input" name="category" style="margin-left: 10px" value="중급"> 중급
+              <input type="radio" class="form-check-input" name="category" style="margin-left: 10px" value="실용"> 실용
+
+              <br><br>
+              <span class="card-subtitle">예산</span>
+                <div class="form-floating mb-3">
+                    <input class="form-control_new" name="budget" id="budget" type="text" placeholder="만원 단위로 기재" />
+                </div>
+
+              <br>
+              <span class="card-subtitle">바닥 공사</span><br>
+              <input type="radio" class="form-check-input" name="floor_type"     value="강마루"> 강마루
+              <input type="radio" class="form-check-input" name="floor_type"     style="margin-left: 10px"   value="원목마루"> 원목마루
+              <input type="radio" class="form-check-input" name="floor_type"     style="margin-left: 10px"   value="대리석"> 대리석
+              <input type="radio" class="form-check-input" name="floor_type"     style="margin-left: 10px"   value="타일"> 타일
+              <input type="radio" class="form-check-input" name="floor_type"     id="floor_5"                style="margin-left: 10px" value="기타"> 기타 :
+              <input type="text"  class="form-input"       name="floor_type_etc" id="floor_type_etc"         style="margin-left: 10px; border: 1px solid #ced4da; border-radius:0.25rem" >
+
+              <br><br>
+              <span class="card-subtitle">욕실공사</span><br>
+              <input type="radio" class="form-check-input" name="bathroom_category" value="디자인"> 디자인
+              <input type="radio" class="form-check-input" name="bathroom_category" style="margin-left: 10px" value="중급"> 중급
+              <input type="radio" class="form-check-input" name="bathroom_category" style="margin-left: 10px" value="실용"> 실용
+
+              <br><br>
+              <span class="card-subtitle">설비공사</span><br>
+              <input type="checkbox" class="form-check-input" name="facility_category" value="전체"> 전체
+              <input type="checkbox" class="form-check-input" name="facility_category" style="margin-left: 10px" value="수도배관"> 수도배관
+              <input type="checkbox" class="form-check-input" name="facility_category" style="margin-left: 10px" value="난방 공사"> 난방 공사
+              <input type="checkbox" class="form-check-input" name="facility_category" style="margin-left: 10px" value="에어컨 배관"> 에어컨 배관
+              <input type="checkbox" class="form-check-input" id="facility_category"  name="facility_category" style="margin-left: 10px" value="설비_기타"> 기타 :
+              <input type="text" class="form-input" id="facility_category_etc" name="facility_category_etc" style="margin-left: 10px; border: 1px solid #ced4da; border-radius:0.25rem" >
+
+              <br><br>
+              <span class="card-subtitle">확장</span><br>
+              <input type="checkbox" class="form-check-input" name="expand_type" value="전체"> 전체
+              <input type="checkbox" class="form-check-input" name="expand_type" style="margin-left: 10px" value="거실"> 거실
+              <input type="checkbox" class="form-check-input" name="expand_type" style="margin-left: 10px" value="주방"> 주방
+              <input type="checkbox" class="form-check-input" name="expand_type" style="margin-left: 10px" value="방"> 방
+              <input type="checkbox" class="form-check-input" id="expand_type5" name="expand_type" style="margin-left: 10px" value="확장_기타" > 기타 :
+              <input type="text" class="form-input" id="expand_type_etc" name="expand_type_etc" style="margin-left: 10px; border: 1px solid #ced4da; border-radius:0.25rem" >
+
+              <br><br>
+              <span class="card-subtitle">샷시</span><br>
+              <input type="checkbox" class="form-check-input" name="sash_type" value="전체"> 전체
+              <input type="checkbox" class="form-check-input" name="sash_type" style="margin-left: 10px" value="부분"> 부분
+              <input type="checkbox" class="form-check-input" name="sash_type" style="margin-left: 10px" value="필름"> 필름
+              <input type="checkbox" class="form-check-input" id="sash_type4" name="sash_type" style="margin-left: 10px" value="샷시_기타"> 기타 :
+              <input type="text" class="form-input" id="sash_type_etc" name="sash_type_etc" style="margin-left: 10px; border: 1px solid #ced4da; border-radius:0.25rem" >
+
+              <!-- Message input-->
+              <br><br>
+              <span class="card-subtitle">기타 문의 및 기재 사항</span><br>
+              <div class="form-floating mb-3">
+                  <textarea id="message" name="message" type="text" style="width:70%; height:100px; border: 1px solid #ced4da; border-radius:0.25rem" ></textarea>
+              </div>
+
+              <br>
+              <span class="card-subtitle">도면 및 현장 사진</span><br>
+              APT 관리사무소 단위세대 도면 &nbsp;
+              <input type="file" class="d_btn"
+              style="border: none;
+                      background-image: none;" name="file"  value="파일 첨부" multiple><br>
+            </div>
+            <br>
+            <!-- Submit Button-->
+            <div class="d-grid">
+                <button type="button" class="btn btn-primary btn-xl" onclick="submitButton2()"
+                        style="width: 200px;
+                               display: block;
+                               margin-left: auto;
+                               margin-right: auto;">Submit
+                </button>
+            </div>
+        </form>
+        </div>
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-lg-4 text-center mb-5 mb-lg-0">
+                <i class="bi-phone fs-2 mb-3 text-muted"></i>
+                <div style="padding-bottom: 5px;">+82 (010) 4903-9203 </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% include  'include/footer.html' %}
+</html>
